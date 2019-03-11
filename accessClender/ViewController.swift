@@ -17,19 +17,22 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-
+    @IBAction func loadEvents(_ sender: UIButton) {
+        
+    }
+    
     @IBAction func AddEvent(_ sender: UIButton) {
        
         eventStore.requestAccess(to: .event) { (granted, error) in
             if (granted) && (error == nil ){
                 print("granted\(granted)")
                 
-                self.evet.title = "Add event Testing title"
+                self.evet.title = "Add event lololololoy"
                 let formatter = DateFormatter()
                 formatter.dateFormat = "yyyy/MM/dd HH:mm"
-                let startDateTime = formatter.date(from: "2019/03/11 05:00");
+                let startDateTime = formatter.date(from: "2019/03/15 05:00");
                 self.evet.startDate = startDateTime
-                let endDateTime = formatter.date(from: "2019/03/11 05:35");
+                let endDateTime = formatter.date(from: "2019/03/16 05:35");
                 self.evet.endDate = endDateTime
                // let alaram = EKAlarm(relativeOffset: 0)
               //  evet.alarms = [alaram]
@@ -58,8 +61,8 @@ class ViewController: UIViewController {
         dateFormatter.dateFormat = "yyyy/MM/dd HH:mm"
         self.calendars = eventStore.calendars(for: EKEntityType.event)
         // Create start and end date NSDate instances to build a predicate for which events to select
-        let startDate = dateFormatter.date(from: "2019/03/11 04:00")
-        let endDate = dateFormatter.date(from: "2019/03/11 20:00")
+        let startDate = dateFormatter.date(from: "2019/03/15 04:00")
+        let endDate = dateFormatter.date(from: "2019/03/17 20:00")
         let prediacte = eventStore.predicateForEvents(withStart: startDate!, end: endDate!, calendars: calendars!)
         self.events = eventStore.events(matching: prediacte)
         for i in events! {
